@@ -42,4 +42,12 @@ Future<void> setup() async {
       remoteDataSource: sl<RemoteDataSource>(),
     ),
   );
+
+  sl.registerLazySingleton<GetMapidUsecase>(
+    () => GetMapidUsecase(
+      repository: sl<MapidRepository>(),
+    ),
+  );
+
+  sl.registerFactory(() => MapidBloc(usecase: sl<GetMapidUsecase>()));
 }

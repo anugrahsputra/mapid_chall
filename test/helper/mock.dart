@@ -11,5 +11,8 @@ import 'package:mockito/annotations.dart';
 /* ---------------> Domain <--------------- */
   MockSpec<MapidRepository>(),
   MockSpec<GetMapidUsecase>(),
+
+/* ---------------> Domain <--------------- */
+  MockSpec<MapidBloc>(),
 ])
 void main(List<String> args) {}
