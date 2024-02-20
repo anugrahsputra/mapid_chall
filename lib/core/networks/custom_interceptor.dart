@@ -46,4 +46,32 @@ class CustomInterceptor extends Interceptor with InterceptorMixin {
       return handler.reject(err);
     }
   }
+
+  Future<Response> request(RequestOptions options) async {
+    return dio.request(
+      options.path,
+      cancelToken: options.cancelToken,
+      data: options.data,
+      onReceiveProgress: options.onReceiveProgress,
+      onSendProgress: options.onSendProgress,
+      queryParameters: options.queryParameters,
+      options: Options(
+        contentType: options.contentType,
+        extra: options.extra,
+        followRedirects: options.followRedirects,
+        headers: options.headers,
+        listFormat: options.listFormat,
+        maxRedirects: options.maxRedirects,
+        method: options.method,
+        receiveDataWhenStatusError: options.receiveDataWhenStatusError,
+        receiveTimeout: options.receiveTimeout,
+        requestEncoder: options.requestEncoder,
+        responseDecoder: options.responseDecoder,
+        responseType: options.responseType,
+        sendTimeout: options.sendTimeout,
+        validateStatus: options.validateStatus,
+        persistentConnection: options.persistentConnection,
+      ),
+    );
+  }
 }
