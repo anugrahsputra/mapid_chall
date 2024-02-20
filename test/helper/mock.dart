@@ -9,5 +9,8 @@ import 'package:mockito/annotations.dart';
 
 /* ---------------> Data <--------------- */
   MockSpec<RemoteDataSource>(),
+
+/* ---------------> Data <--------------- */
+  MockSpec<MapidRepository>(),
 ])
 void main(List<String> args) {}
