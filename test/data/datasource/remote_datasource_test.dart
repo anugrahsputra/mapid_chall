@@ -38,5 +38,17 @@ void main() {
         options: anyNamed('options'),
       ));
     });
+
+    test('should throw ServerException when status code is not 200', () async {
+      Exception exception = ServerException();
+
+      when(dio.get(
+        Endpoint.baseUrl,
+        options: anyNamed('options'),
+        queryParameters: anyNamed('queryParameters'),
+      )).thenThrow(exception);
+
+      expect(() async => await remoteDataSource.getMapid(), throwsA(exception));
+    });
   });
 }
