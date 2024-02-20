@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mapid_chall/features/maps/maps.dart';
 
 import 'core/core.dart';
-import 'features/maps/data/data.dart';
 
 final sl = GetIt.instance;
 
@@ -32,6 +32,14 @@ Future<void> setup() async {
   sl.registerFactory<CustomInterceptor>(() => CustomInterceptor());
 
   sl.registerLazySingleton<RemoteDataSource>(
-    () => IRemoteDataSource(dio: sl<Dio>()),
+    () => IRemoteDataSource(
+      dio: sl<Dio>(),
+    ),
+  );
+
+  sl.registerLazySingleton<MapidRepository>(
+    () => IMapidRepository(
+      remoteDataSource: sl<RemoteDataSource>(),
+    ),
   );
 }
