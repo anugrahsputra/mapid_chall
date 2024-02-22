@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:info_popup/info_popup.dart';
+import 'package:latlong2/latlong.dart';
 
+import '../../../../../core/core.dart';
 import '../../../../../injection.dart';
 import '../../../maps.dart';
+
+part 'map_page.component.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -24,28 +30,8 @@ class _MapPageState extends State<MapPage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => mapidBloc,
-      child: Scaffold(
-        body: BlocBuilder<MapidBloc, MapidState>(
-          builder: (context, state) {
-            return state.when(
-              initial: () => const Center(
-                child: CircularProgressIndicator(),
-              ),
-              loading: () => const Center(
-                child: CircularProgressIndicator(),
-              ),
-              loaded: (mapid) {
-                List<Feature> features = mapid.features;
-                return Center(
-                  child: Text(features[0].properties.nama),
-                );
-              },
-              error: (failure) => Center(
-                child: Text(failure),
-              ),
-            );
-          },
-        ),
+      child: const Scaffold(
+        body: ContentView(),
       ),
     );
   }
