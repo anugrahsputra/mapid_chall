@@ -187,14 +187,15 @@ class __$$MapidModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$MapidModelImpl implements _MapidModel {
+class _$MapidModelImpl extends _MapidModel {
   const _$MapidModelImpl(
       {@JsonKey(name: "geojson") this.geojson,
       @JsonKey(name: "_id") this.id,
       @JsonKey(name: "user") this.user,
       @JsonKey(name: "geo_project") this.geoProject,
       @JsonKey(name: "folder") this.folder,
-      @JsonKey(name: "status") this.status});
+      @JsonKey(name: "status") this.status})
+      : super._();
 
   factory _$MapidModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$MapidModelImplFromJson(json);
@@ -256,7 +257,7 @@ class _$MapidModelImpl implements _MapidModel {
   }
 }
 
-abstract class _MapidModel implements MapidModel {
+abstract class _MapidModel extends MapidModel {
   const factory _MapidModel(
       {@JsonKey(name: "geojson") final GeojsonModel? geojson,
       @JsonKey(name: "_id") final String? id,
@@ -264,6 +265,7 @@ abstract class _MapidModel implements MapidModel {
       @JsonKey(name: "geo_project") final String? geoProject,
       @JsonKey(name: "folder") final String? folder,
       @JsonKey(name: "status") final String? status}) = _$MapidModelImpl;
+  const _MapidModel._() : super._();
 
   factory _MapidModel.fromJson(Map<String, dynamic> json) =
       _$MapidModelImpl.fromJson;
@@ -392,11 +394,12 @@ class __$$GeojsonModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$GeojsonModelImpl implements _GeojsonModel {
+class _$GeojsonModelImpl extends _GeojsonModel {
   const _$GeojsonModelImpl(
       {@JsonKey(name: "type") this.type,
       @JsonKey(name: "features") final List<FeatureModel>? features})
-      : _features = features;
+      : _features = features,
+        super._();
 
   factory _$GeojsonModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$GeojsonModelImplFromJson(json);
@@ -448,11 +451,12 @@ class _$GeojsonModelImpl implements _GeojsonModel {
   }
 }
 
-abstract class _GeojsonModel implements GeojsonModel {
+abstract class _GeojsonModel extends GeojsonModel {
   const factory _GeojsonModel(
           {@JsonKey(name: "type") final String? type,
           @JsonKey(name: "features") final List<FeatureModel>? features}) =
       _$GeojsonModelImpl;
+  const _GeojsonModel._() : super._();
 
   factory _GeojsonModel.fromJson(Map<String, dynamic> json) =
       _$GeojsonModelImpl.fromJson;
@@ -788,7 +792,7 @@ class __$$FeatureModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$FeatureModelImpl implements _FeatureModel {
+class _$FeatureModelImpl extends _FeatureModel {
   const _$FeatureModelImpl(
       {@JsonKey(name: "geometry") this.geometry,
       @JsonKey(name: "formStatus") this.formStatus,
@@ -806,7 +810,8 @@ class _$FeatureModelImpl implements _FeatureModel {
       final List<dynamic>? countingCustomArray})
       : _dataPembandingList = dataPembandingList,
         _childArray = childArray,
-        _countingCustomArray = countingCustomArray;
+        _countingCustomArray = countingCustomArray,
+        super._();
 
   factory _$FeatureModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$FeatureModelImplFromJson(json);
@@ -936,7 +941,7 @@ class _$FeatureModelImpl implements _FeatureModel {
   }
 }
 
-abstract class _FeatureModel implements FeatureModel {
+abstract class _FeatureModel extends FeatureModel {
   const factory _FeatureModel(
       {@JsonKey(name: "geometry") final GeometryModel? geometry,
       @JsonKey(name: "formStatus") final FormStatusModel? formStatus,
@@ -952,6 +957,7 @@ abstract class _FeatureModel implements FeatureModel {
       @JsonKey(name: "child_array") final List<dynamic>? childArray,
       @JsonKey(name: "counting_custom_array")
       final List<dynamic>? countingCustomArray}) = _$FeatureModelImpl;
+  const _FeatureModel._() : super._();
 
   factory _FeatureModel.fromJson(Map<String, dynamic> json) =
       _$FeatureModelImpl.fromJson;
@@ -1097,10 +1103,11 @@ class __$$FormProgressModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FormProgressModelImpl implements _FormProgressModel {
+class _$FormProgressModelImpl extends _FormProgressModel {
   const _$FormProgressModelImpl(
       {@JsonKey(name: "message") this.message,
-      @JsonKey(name: "status") this.status});
+      @JsonKey(name: "status") this.status})
+      : super._();
 
   factory _$FormProgressModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$FormProgressModelImplFromJson(json);
@@ -1145,10 +1152,11 @@ class _$FormProgressModelImpl implements _FormProgressModel {
   }
 }
 
-abstract class _FormProgressModel implements FormProgressModel {
+abstract class _FormProgressModel extends FormProgressModel {
   const factory _FormProgressModel(
       {@JsonKey(name: "message") final String? message,
       @JsonKey(name: "status") final String? status}) = _$FormProgressModelImpl;
+  const _FormProgressModel._() : super._();
 
   factory _FormProgressModel.fromJson(Map<String, dynamic> json) =
       _$FormProgressModelImpl.fromJson;
@@ -1278,12 +1286,13 @@ class __$$FormStatusModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FormStatusModelImpl implements _FormStatusModel {
+class _$FormStatusModelImpl extends _FormStatusModel {
   const _$FormStatusModelImpl(
       {@JsonKey(name: "status") this.status,
       @JsonKey(name: "message") this.message,
       @JsonKey(name: "revision_list") final List<dynamic>? revisionList})
-      : _revisionList = revisionList;
+      : _revisionList = revisionList,
+        super._();
 
   factory _$FormStatusModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$FormStatusModelImplFromJson(json);
@@ -1341,12 +1350,13 @@ class _$FormStatusModelImpl implements _FormStatusModel {
   }
 }
 
-abstract class _FormStatusModel implements FormStatusModel {
+abstract class _FormStatusModel extends FormStatusModel {
   const factory _FormStatusModel(
           {@JsonKey(name: "status") final String? status,
           @JsonKey(name: "message") final String? message,
           @JsonKey(name: "revision_list") final List<dynamic>? revisionList}) =
       _$FormStatusModelImpl;
+  const _FormStatusModel._() : super._();
 
   factory _FormStatusModel.fromJson(Map<String, dynamic> json) =
       _$FormStatusModelImpl.fromJson;
@@ -1465,11 +1475,12 @@ class __$$GeometryModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GeometryModelImpl implements _GeometryModel {
+class _$GeometryModelImpl extends _GeometryModel {
   const _$GeometryModelImpl(
       {@JsonKey(name: "coordinates") final List<double>? coordinates,
       @JsonKey(name: "type") this.type})
-      : _coordinates = coordinates;
+      : _coordinates = coordinates,
+        super._();
 
   factory _$GeometryModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$GeometryModelImplFromJson(json);
@@ -1523,10 +1534,11 @@ class _$GeometryModelImpl implements _GeometryModel {
   }
 }
 
-abstract class _GeometryModel implements GeometryModel {
+abstract class _GeometryModel extends GeometryModel {
   const factory _GeometryModel(
       {@JsonKey(name: "coordinates") final List<double>? coordinates,
       @JsonKey(name: "type") final String? type}) = _$GeometryModelImpl;
+  const _GeometryModel._() : super._();
 
   factory _GeometryModel.fromJson(Map<String, dynamic> json) =
       _$GeometryModelImpl.fromJson;
@@ -1740,7 +1752,7 @@ class __$$PropertiesModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PropertiesModelImpl implements _PropertiesModel {
+class _$PropertiesModelImpl extends _PropertiesModel {
   const _$PropertiesModelImpl(
       {@JsonKey(name: "icon_image") this.iconImage,
       @JsonKey(name: "text_field") this.textField,
@@ -1750,7 +1762,8 @@ class _$PropertiesModelImpl implements _PropertiesModel {
       @JsonKey(name: "circle_stroke_color") this.circleStrokeColor,
       @JsonKey(name: "Nama") this.nama,
       @JsonKey(name: "Status") this.status,
-      @JsonKey(name: "Angka") this.angka});
+      @JsonKey(name: "Angka") this.angka})
+      : super._();
 
   factory _$PropertiesModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PropertiesModelImplFromJson(json);
@@ -1830,7 +1843,7 @@ class _$PropertiesModelImpl implements _PropertiesModel {
   }
 }
 
-abstract class _PropertiesModel implements PropertiesModel {
+abstract class _PropertiesModel extends PropertiesModel {
   const factory _PropertiesModel(
       {@JsonKey(name: "icon_image") final String? iconImage,
       @JsonKey(name: "text_field") final String? textField,
@@ -1841,6 +1854,7 @@ abstract class _PropertiesModel implements PropertiesModel {
       @JsonKey(name: "Nama") final String? nama,
       @JsonKey(name: "Status") final String? status,
       @JsonKey(name: "Angka") final String? angka}) = _$PropertiesModelImpl;
+  const _PropertiesModel._() : super._();
 
   factory _PropertiesModel.fromJson(Map<String, dynamic> json) =
       _$PropertiesModelImpl.fromJson;
@@ -1961,8 +1975,9 @@ class __$$RefFeatureModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RefFeatureModelImpl implements _RefFeatureModel {
-  const _$RefFeatureModelImpl({@JsonKey(name: "status") this.status});
+class _$RefFeatureModelImpl extends _RefFeatureModel {
+  const _$RefFeatureModelImpl({@JsonKey(name: "status") this.status})
+      : super._();
 
   factory _$RefFeatureModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$RefFeatureModelImplFromJson(json);
@@ -2003,9 +2018,10 @@ class _$RefFeatureModelImpl implements _RefFeatureModel {
   }
 }
 
-abstract class _RefFeatureModel implements RefFeatureModel {
+abstract class _RefFeatureModel extends RefFeatureModel {
   const factory _RefFeatureModel(
       {@JsonKey(name: "status") final bool? status}) = _$RefFeatureModelImpl;
+  const _RefFeatureModel._() : super._();
 
   factory _RefFeatureModel.fromJson(Map<String, dynamic> json) =
       _$RefFeatureModelImpl.fromJson;
