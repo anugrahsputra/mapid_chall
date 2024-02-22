@@ -32,6 +32,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   dartz: ^0.10.1
   dio: ^5.4.1
+  envied: ^0.5.3
   equatable: ^2.0.5
   flutter:
     sdk: flutter
@@ -47,6 +48,7 @@ dependencies:
 dev_dependencies:
   bloc_test: ^9.1.6
   build_runner: ^2.4.8
+  envied_generator: ^0.5.3
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
