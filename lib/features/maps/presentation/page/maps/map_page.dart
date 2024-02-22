@@ -27,24 +27,21 @@ class _MapPageState extends State<MapPage> {
       child: Scaffold(
         body: BlocBuilder<MapidBloc, MapidState>(
           builder: (context, state) {
-            return state.map(
-              initial: (_) => const Center(
+            return state.when(
+              initial: () => const Center(
                 child: CircularProgressIndicator(),
               ),
-              loading: (_) => const Center(
+              loading: () => const Center(
                 child: CircularProgressIndicator(),
               ),
-              loaded: (state) {
-                List<Feature> features = state.geojson.features;
+              loaded: (mapid) {
+                List<Feature> features = mapid.features;
                 return Center(
-                  child: Column(
-                    children:
-                        features.map((e) => Text(e.properties.nama)).toList(),
-                  ),
+                  child: Text(features[0].properties.nama),
                 );
               },
-              error: (state) => Center(
-                child: Text(state.message),
+              error: (failure) => Center(
+                child: Text(failure),
               ),
             );
           },

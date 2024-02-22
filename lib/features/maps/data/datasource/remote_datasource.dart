@@ -17,9 +17,9 @@ class IRemoteDataSource implements RemoteDataSource {
     final response = await dio.get(
       Endpoint.baseUrl,
       queryParameters: {
-        "api_key": "689c2279e0834a3ba82743432605e746",
-        "layer_id": "628f1d7c84b953e79a7cd896",
-        "project_id": "611eafa6be8a2635e15c4afc",
+        "api_key": Env.apiKey,
+        "layer_id": Env.layerId,
+        "project_id": Env.projectId,
       },
     );
     return MapidModel.fromJson(response.data);
