@@ -5,51 +5,46 @@ class ContentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Map<String, Color> statusColor = {
-      "Merah": Color.fromARGB(255, 160, 0, 0),
-      "Kuning": Color.fromARGB(255, 175, 158, 0),
-      "Hijau": Color.fromARGB(255, 52, 119, 54),
-    };
     return BlocBuilder<MapidBloc, MapidState>(
       builder: (context, state) {
-        return state.when(
-          initial: () => const Center(
+        if (state is Initial) {
+          return const Center(
             child: CircularProgressIndicator(),
-          ),
-          loading: () => const Center(
+          );
+        } else if (state is Loading) {
+          return const Center(
             child: CircularProgressIndicator(),
-          ),
-          loaded: (mapid) {
-            List<Feature> features = mapid.features;
-            return FlutterMap(
-              options: const MapOptions(
-                initialCenter: LatLng(-6.937542821523006, 107.63486978433615),
-                initialZoom: 11.9,
+          );
+        } else if (state is Loaded) {
+          List<Feature> features = state.geojson.features;
+          return FlutterMap(
+            options: const MapOptions(
+              initialCenter: LatLng(-6.937542821523006, 107.63486978433615),
+              initialZoom: 11.9,
+            ),
+            children: [
+              TileLayer(
+                urlTemplate: AppConstant.mapboxUrl,
+                additionalOptions: const {
+                  'accessToken': Env.accessToken,
+                  'mapStyleId': Env.styleId,
+                },
               ),
-              children: [
-                TileLayer(
-                  urlTemplate:
-                      'https://api.mapbox.com/styles/v1/downormal/${Env.styleId}/tiles/256/{z}/{x}/{y}@2x?access_token=${Env.accessToken}',
-                  additionalOptions: const {
-                    'accessToken': Env.accessToken,
-                    'mapStyleId': Env.styleId,
-                  },
-                ),
-                MarkerLayer(
-                  markers: List.generate(
-                    features.length,
-                    (index) => Marker(
+              MarkerLayer(
+                markers: [
+                  for (var feature in features)
+                    Marker(
                       width: 15,
                       height: 15,
                       point: LatLng(
-                        features[index].geometry.coordinates[1],
-                        features[index].geometry.coordinates[0],
+                        feature.geometry.coordinates[1],
+                        feature.geometry.coordinates[0],
                       ),
                       child: InfoPopupWidget(
                         arrowTheme: const InfoPopupArrowTheme(
                           color: Colors.white,
                         ),
-                        customContent: () => PopupBox(feature: features[index]),
+                        customContent: () => PopupBox(feature: feature),
                         child: Container(
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
@@ -57,21 +52,21 @@ class ContentView extends StatelessWidget {
                               color: Colors.white,
                               width: 1,
                             ),
-                            color:
-                                statusColor[features[index].properties.status],
+                            color: AppConstant
+                                .statusColor[feature.properties.status],
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-              ],
-            );
-          },
-          error: (failure) => Center(
-            child: Text(failure),
-          ),
-        );
+                ],
+              ),
+            ],
+          );
+        } else {
+          return const Center(
+            child: Text('Error'),
+          );
+        }
       },
     );
   }
