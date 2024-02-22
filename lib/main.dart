@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mapid_chall/injection.dart';
 
+import 'core/core.dart';
 import 'features/maps/maps.dart';
 
 Future<void> main() async {
+  CustomLog.initialize(showLog: true);
   WidgetsFlutterBinding.ensureInitialized();
 
   await setup();
@@ -13,7 +15,6 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
