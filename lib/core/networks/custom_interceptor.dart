@@ -23,27 +23,28 @@ class CustomInterceptor extends Interceptor with InterceptorMixin {
   @override
   void onResponse(response, handler) {
     log.info("Response: ${response.statusMessage}");
-
     handler.next(response);
   }
 
   @override
   void onError(err, handler) async {
-    log.warning("Error: ${err.requestOptions.uri}");
     if (isConnectionError(err)) {
       try {
-        log.warning("Connection Error: ${err.requestOptions.uri}");
+        log.warning("Connection Error: ${err.requestOptions.uri} resolving...");
         final response = await requestRetrier.retryRequest(err.requestOptions);
         return handler.resolve(response);
       } catch (e) {
-        log.severe("Connection Error: ${err.requestOptions.uri}");
-        NetworkException();
+        log.severe("Connection Error: ${err.requestOptions.uri} failed.");
         return handler.reject(err);
       }
+    } else if (isNotFound(err)) {
+      log.severe("Not Found: ${err.requestOptions.uri}");
+      handler.next(err);
+      throw ServerException();
     } else {
       log.severe("Error: ${err.error}");
-      ServerException();
-      return handler.reject(err);
+      handler.next(err);
+      throw ServerException();
     }
   }
 }
