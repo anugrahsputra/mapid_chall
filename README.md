@@ -4,6 +4,10 @@
 - [x] Flutter
 - [x] Mapbox
 
+## SDK yang digunakan
+- Flutter 3.19.0
+- Dart 3.3.0
+
 ## Dependensi yang digunakan
 - [x] flutter_map
 - [x] Dio
