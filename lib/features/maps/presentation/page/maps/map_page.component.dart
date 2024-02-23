@@ -27,15 +27,15 @@ class ContentView extends StatelessWidget {
                 urlTemplate: AppConstant.mapboxUrl,
                 additionalOptions: const {
                   'accessToken': Env.accessToken,
-                  'mapStyleId': Env.styleId,
+                  'id': Env.styleId,
                 },
               ),
               MarkerLayer(
                 markers: [
-                  for (var feature in features)
+                  for (var feature in features) ...[
                     Marker(
-                      width: 15,
-                      height: 15,
+                      width: 13,
+                      height: 13,
                       point: LatLng(
                         feature.geometry.coordinates[1],
                         feature.geometry.coordinates[0],
@@ -59,6 +59,7 @@ class ContentView extends StatelessWidget {
                         ),
                       ),
                     ),
+                  ],
                 ],
               ),
             ],

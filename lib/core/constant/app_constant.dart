@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mapid_chall/core/core.dart';
 
 abstract class AppConstant {
   static Map<String, Color> get statusColor => {
@@ -9,5 +8,5 @@ abstract class AppConstant {
       };
 
   static String get mapboxUrl =>
-      'https://api.mapbox.com/styles/v1/downormal/${Env.styleId}/tiles/256/{z}/{x}/{y}@2x?access_token=${Env.accessToken}';
+      'https://api.mapbox.com/styles/v1/downormal/{id}/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}';
 }
