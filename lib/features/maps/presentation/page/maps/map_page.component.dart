@@ -44,7 +44,8 @@ class ContentView extends StatelessWidget {
                         arrowTheme: const InfoPopupArrowTheme(
                           color: Colors.white,
                         ),
-                        customContent: () => PopupBox(feature: feature),
+                        customContent: () =>
+                            PopupBox(properties: feature.properties),
                         child: Container(
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
@@ -75,10 +76,10 @@ class ContentView extends StatelessWidget {
 class PopupBox extends StatelessWidget {
   const PopupBox({
     super.key,
-    required this.feature,
+    required this.properties,
   });
 
-  final Feature feature;
+  final Properties properties;
 
   @override
   Widget build(BuildContext context) {
@@ -94,15 +95,15 @@ class PopupBox extends StatelessWidget {
         children: [
           PopupContent(
             title: 'Nama',
-            text: feature.properties.nama,
+            text: properties.nama,
           ),
           PopupContent(
             title: 'Status',
-            text: feature.properties.status,
+            text: properties.status,
           ),
           PopupContent(
             title: 'Angka',
-            text: feature.properties.angka.toString(),
+            text: properties.angka.toString(),
           ),
         ],
       ),

@@ -5,7 +5,6 @@ import 'package:info_popup/info_popup.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../../../../../core/core.dart';
-import '../../../../../injection.dart';
 import '../../../maps.dart';
 
 part 'map_page.component.dart';
@@ -18,36 +17,30 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  final MapidBloc mapidBloc = sl<MapidBloc>();
-
   @override
   void initState() {
-    mapidBloc.add(const OnShowLoc());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => mapidBloc,
-      child: MultiBlocListener(
-        listeners: [
-          BlocListener<MapidBloc, MapidState>(
-            listener: (context, state) {
-              if (state is Error) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Something went wrong'),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-              }
-            },
-          ),
-        ],
-        child: const Scaffold(
-          body: ContentView(),
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<MapidBloc, MapidState>(
+          listener: (context, state) {
+            if (state is Error) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Something went wrong'),
+                  backgroundColor: Colors.red,
+                ),
+              );
+            }
+          },
         ),
+      ],
+      child: const Scaffold(
+        body: ContentView(),
       ),
     );
   }

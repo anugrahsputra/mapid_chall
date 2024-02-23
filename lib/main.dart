@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mapid_chall/injection.dart';
 
 import 'core/core.dart';
@@ -45,12 +46,20 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<MapidBloc>()..add(const OnShowLoc()),
+        ),
+      ],
+      child: MaterialApp(
         title: 'MAPID Project test',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const MapPage());
+        home: const MapPage(),
+      ),
+    );
   }
 }
