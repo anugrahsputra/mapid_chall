@@ -9,17 +9,18 @@
 - Dart 3.3.0
 
 ## Dependensi yang digunakan
-- [x] flutter_map
-- [x] Dio
-- [x] dartz
-- [x] latlong2 
-- [x] GetIt
-- [x] Bloc
-- [x] Equatable
-- [x] Freezed
-- [x] json_serializable
-- [x] build_runner
-- [x] envied
+-  flutter_map
+-  Dio
+-  dartz
+-  latlong2 
+-  GetIt
+-  Bloc
+-  flutter_bloc
+-  Equatable
+-  Freezed
+-  json_serializable
+-  build_runner
+-  envied
 
 ## Fungsi - Fungsi
 - [x] Menampilkan peta secara full screen
