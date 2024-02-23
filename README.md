@@ -25,8 +25,9 @@ peta.
 - [x] Memberikan warna berbeda-beda antar titik sesuai dengan data didalam properties ->
 Status dari response API
 
-# Screenshoj
-![Screenshot](/screenshot/screenshot1.png)
+# Screenshot
+<img src="/sceenshot/Screenshot1.png">
+
 
 # Menjalankan Aplikasi dari Source Code
 Jalan kan perintah
