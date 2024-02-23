@@ -1,16 +1,42 @@
-# mapid_chall
+# Tugas Rekrutmen Mobile Developer MAPID
 
-A new Flutter project.
+## Library/Platform yang digunakan
+- [x] Flutter
+- [x] Mapbox
 
-## Getting Started
+## Dependensi yang digunakan
+- [x] flutter_map
+- [x] Dio
+- [x] dartz
+- [x] latlong2 
+- [x] GetIt
+- [x] Bloc
+- [x] Equatable
+- [x] Freezed
+- [x] json_serializable
+- [x] build_runner
+- [x] envied
 
-This project is a starting point for a Flutter application.
+## Fungsi - Fungsi
+- [x] Menampilkan peta secara full screen
+- [x] Mengakses API yang berisi geojson kemudian menampilkan titik-titik yang di dalam API ke
+peta.
+- [x] Menampilkan popup ketika marker di klik
+- [x] Memberikan warna berbeda-beda antar titik sesuai dengan data didalam properties ->
+Status dari response API
 
-A few resources to get you started if this is your first Flutter project:
+# Screenshoj
+![Screenshot](/screenshot/screenshot1.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# Menjalankan Aplikasi dari Source Code
+Jalan kan perintah
+```bash
+flutter pub get
+```
+Kemudian rename file .env.example menjadi .env dan isi value
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Kemudian jalankan perintah
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+untuk mengenerate file g.dart
