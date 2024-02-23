@@ -37,28 +37,28 @@ void main() {
 
       expect(result, const Left(ServerFailure(message: "Server Failure")));
       verify(remoteDataSource.getMapid());
+    });
 
-      test(
-          'should return NetworkFailure when the call to remoteDataSource is unsuccessfull',
-          () async {
-        when(remoteDataSource.getMapid()).thenThrow(NetworkException());
+    test(
+        'should return NetworkFailure when the call to remoteDataSource is unsuccessfull',
+        () async {
+      when(remoteDataSource.getMapid()).thenThrow(NetworkException());
 
-        final result = await repository.getMapid();
+      final result = await repository.getMapid();
 
-        expect(result, const Left(NetworkFailure(message: "Network Failure")));
-        verify(remoteDataSource.getMapid());
-      });
+      expect(result, const Left(NetworkFailure(message: "Network Failure")));
+      verify(remoteDataSource.getMapid());
+    });
 
-      test(
-          'should return UnknownFailure when the call to remoteDataSource is unsuccessfull',
-          () async {
-        when(remoteDataSource.getMapid()).thenThrow(UnknowException());
+    test(
+        'should return UnknownFailure when the call to remoteDataSource is unsuccessfull',
+        () async {
+      when(remoteDataSource.getMapid()).thenThrow(UnknowException());
 
-        final result = await repository.getMapid();
+      final result = await repository.getMapid();
 
-        expect(result, const Left(UnknownFailure(message: "Unknow Failure")));
-        verify(remoteDataSource.getMapid());
-      });
+      expect(result, const Left(UnknownFailure(message: "Unknow Failure")));
+      verify(remoteDataSource.getMapid());
     });
   });
 }

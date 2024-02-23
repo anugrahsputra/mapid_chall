@@ -18,9 +18,9 @@ void main() {
   test('should get data from repository', () async {
     when(mockMapidRepository.getMapid())
         .thenAnswer((_) async => const Right(mapidEntity));
-   
+
     final result = await getMapidUsecase();
-    
+
     expect(result, const Right(mapidEntity));
     verify(mockMapidRepository.getMapid());
     verifyNoMoreInteractions(mockMapidRepository);
