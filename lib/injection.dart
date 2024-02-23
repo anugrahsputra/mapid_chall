@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mapid_chall/features/maps/maps.dart';
@@ -30,6 +32,8 @@ Future<void> setup() async {
   );
 
   sl.registerFactory<CustomInterceptor>(() => CustomInterceptor());
+
+  sl.registerFactory<Completer>(() => Completer());
 
   sl.registerLazySingleton<RemoteDataSource>(
     () => IRemoteDataSource(

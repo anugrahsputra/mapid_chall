@@ -30,8 +30,24 @@ class _MapPageState extends State<MapPage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => mapidBloc,
-      child: const Scaffold(
-        body: ContentView(),
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<MapidBloc, MapidState>(
+            listener: (context, state) {
+              if (state is Error) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Something went wrong'),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              }
+            },
+          ),
+        ],
+        child: const Scaffold(
+          body: ContentView(),
+        ),
       ),
     );
   }

@@ -9,11 +9,12 @@ class RequestRetrier {
 
   RequestRetrier({required this.dio, required this.internetConnectionChecker});
 
-  Future<Response> retryRequest(RequestOptions requestOptions) {
+  Future<Response> retryRequest(RequestOptions requestOptions) async {
     late StreamSubscription subscription;
     final completer = Completer<Response>();
 
-    subscription = internetConnectionChecker.onStatusChange.listen((status) {
+    subscription =
+        internetConnectionChecker.onStatusChange.listen((status) async {
       if (status == InternetConnectionStatus.connected) {
         subscription.cancel();
 
