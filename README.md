@@ -39,7 +39,7 @@ Jalan kan perintah
 ```bash
 flutter pub get
 ```
-Kemudian rename file .env.example menjadi .env dan isi value
+Kemudian rename file .env.example menjadi .env dan isi value (MAPBOX token dan lain lain)
 
 Kemudian jalankan perintah
 ```bash
