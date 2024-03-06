@@ -46,6 +46,3 @@ Kemudian jalankan perintah
 dart run build_runner build --delete-conflicting-outputs
 ```
 untuk mengenerate file g.dart
-
-# Download apk
-Download apk melalui release
